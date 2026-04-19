@@ -1,0 +1,27 @@
+- name: Test Playbook
+  hosts: web 
+  tasks: 
+   - name: Create Test File
+     file:
+      path: ~/helloworld.txt
+      state: touch 
+     become: no
+   - name: Upadte file with content
+     copy: 
+      dest: "~/helloworld.txt"
+      content: "This file was created by Ansible"
+     become: no
+   - name: Update file with multiple line content 
+     copy: 
+      dest: "~/helloworld.txt"
+      content: |
+        Hello World
+        K cha 
+        Thik cha
+     become: no
+   - name: Copy a file from local to remote
+     copy: 
+      src: "~/new-ansible-lab/hello.txt"
+      dest: "~/copied-file.txt"
+     become: no
+

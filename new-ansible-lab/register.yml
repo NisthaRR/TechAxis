@@ -1,0 +1,10 @@
+- name: Register variables
+  hosts: web
+  tasks:
+    - name: Check Uptime
+      command: uptime
+      register: uptime_output
+
+    - name: Print Output
+      debug:
+        var: uptime_output.stdout
