@@ -1,0 +1,9 @@
+- name: Conditional YAML
+  hosts: web
+  become: yes
+  tasks:
+   - name: Install nginx on Debian
+     apt:
+      name: nginx
+      state: present
+     when: ansible_os_family == "Debian" and ansible_distribution_version == "20.04"
